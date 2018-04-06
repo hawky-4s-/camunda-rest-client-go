@@ -1,24 +1,30 @@
-language: go
-  sudo: required
-  go:
-    - "1.5"
-    - "1.6"
-    - "1.7"
-    - "1.8"
-    - "1.9"
-    - "1.10"
-    - tip
-  os:
-    - linux
-    - osx
-  matrix:
-    allow_failures:
-      - go: tip
-    fast_finish: true
-  install:
-    - make vendor
-  script:
-    - make hugo-race check
+sudo: required
 
-after_success:
-  test -n "$TRAVIS_TAG" && curl -s https://raw.githubusercontent.com/goreleaser/get/master/latest | bash
+language: go
+
+services:
+  - docker
+
+go:
+  - "1.8"
+  - "1.9"
+  - "1.10"
+  - tip
+
+os:
+  - linux
+  - osx
+
+matrix:
+  allow_failures:
+    - go: tip
+  fast_finish: true
+
+jobs:
+  include:
+    - stage: check
+      script: make check
+    - stage: test
+      script: make test-unit
+    - stage: integration
+      script: make test-integration

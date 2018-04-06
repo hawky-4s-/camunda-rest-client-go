@@ -22,3 +22,8 @@
 
 Variable handling -> JSON :)
 // json.Unmarshal(textBytes, &people1)
+
+
+Error Handling of Responses (how to do with type? specific ones)
+
+Check if it's possible to restrict usage of interface{} to io.Reader for example

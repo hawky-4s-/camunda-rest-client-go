@@ -1,0 +1,46 @@
+[
+    {
+        "@class": "org.camunda.bpm.engine.rest.dto.repository.ProcessDefinitionStatisticsResultDto",
+        "id": "invoice:1:d432dc03-377e-11e8-b6fc-0242ac110002",
+        "instances": 0,
+        "failedJobs": 0,
+        "incidents": [],
+        "definition": {
+            "id": "invoice:1:d432dc03-377e-11e8-b6fc-0242ac110002",
+            "key": "invoice",
+            "category": "http://www.omg.org/spec/BPMN/20100524/MODEL",
+            "description": null,
+            "name": "Invoice Receipt",
+            "version": 1,
+            "resource": "invoice.bpmn",
+            "deploymentId": "d4309211-377e-11e8-b6fc-0242ac110002",
+            "diagram": null,
+            "suspended": false,
+            "tenantId": "",
+            "versionTag": "V1.0",
+            "historyTimeToLive": null
+        }
+    },
+    {
+        "@class": "org.camunda.bpm.engine.rest.dto.repository.ProcessDefinitionStatisticsResultDto",
+        "id": "invoice:2:6fb30070-32c8-11e8-b6fc-0242ac110002",
+        "instances": 3,
+        "failedJobs": 0,
+        "incidents": [],
+        "definition": {
+            "id": "invoice:2:6fb30070-32c8-11e8-b6fc-0242ac110002",
+            "key": "invoice",
+            "category": "http://www.omg.org/spec/BPMN/20100524/MODEL",
+            "description": null,
+            "name": "Invoice Receipt",
+            "version": 2,
+            "resource": "invoice.v2.bpmn",
+            "deploymentId": "6faf7dfc-32c8-11e8-b6fc-0242ac110002",
+            "diagram": null,
+            "suspended": false,
+            "tenantId": null,
+            "versionTag": "V2.0",
+            "historyTimeToLive": null
+        }
+    }
+]

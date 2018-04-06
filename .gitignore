@@ -18,7 +18,6 @@
 
 octoman
 /.idea
-octoman.exe
 *.test
 *.prof
 nohup.out
@@ -27,7 +26,5 @@ cover.out
 *.swo
 .DS_Store
 *~
-vendor-old/*/
 coverage*.out
-
 dist

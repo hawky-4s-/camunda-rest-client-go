@@ -1,0 +1,17 @@
+{
+    "activityId": "anActivityId",
+    "activityInstanceId": "anActivityInstanceId",
+    "errorMessage": "anErrorMessage",
+    "executionId": "anExecutionId",
+    "id": "anExternalTaskId",
+    "lockExpirationTime": "2015-10-06T16:34:42.000+0200",
+    "processDefinitionId": "aProcessDefinitionId",
+    "processDefinitionKey": "aProcessDefinitionKey",
+    "processInstanceId": "aProcessInstanceId",
+    "tenantId": null,
+    "retries": 3,
+    "suspended": false,
+    "workerId": "aWorkerId",
+    "priority":0,
+    "topicName": "aTopic"
+}

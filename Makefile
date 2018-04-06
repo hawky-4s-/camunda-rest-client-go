@@ -1,51 +1,41 @@
 #!/usr/bin/make
 # A Self-Documenting Makefile: http://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 
-PACKAGE = github.com/hawky-4s-/octoman
-COMMIT_HASH = `git rev-parse --short HEAD 2>/dev/null`
-BUILD_DATE = `date +%FT%T%z`
-LDFLAGS = -ldflags "-X ${PACKAGE}/helpers.CommitHash=${COMMIT_HASH} -X ${PACKAGE}/helpers.BuildDate=${BUILD_DATE}"
-NOGI_LDFLAGS = -ldflags "-X ${PACKAGE}/helpers.BuildDate=${BUILD_DATE}"
+PACKAGE = github.com/hawky-4s-/camunda-rest-client-go
+VERSION_GOMETALINDER := 2.0.5
 
-.PHONY: vendor docker check fmt lint test test-race vet test-cover-html help
+.PHONY: vendor check fmt lint test test-race vet test-cover-html help integration-test performance-test
 .DEFAULT_GOAL := help
 
 generate: ## Generate accessors
-	go generate ../camunda-external-task-client-go/...
+	go generate ../camunda-rest-client-go/...
 
-vendor: ## Install govendor and sync Octoman's vendored dependencies
-	go get github.com/kardianos/govendor
-	govendor sync ${PACKAGE}
+vendor: ## Install dep and get dependencies
+	dep ensure
 
-octoman: vendor ## Build octoman binary
-	go build ${LDFLAGS} ${PACKAGE}
-
-octoman-race: vendor ## Build octoman binary with race detector enabled
-	go build -race ${LDFLAGS} ${PACKAGE}
-
-install: vendor ## Install octoman binary
-	go install ${LDFLAGS} ${PACKAGE}
-
-octoman-no-gitinfo: LDFLAGS = ${NOGI_LDFLAGS}
-octoman-no-gitinfo: vendor octoman ## Build octoman without git info
-
-docker: ## Build octoman Docker container
-	docker build -t octoman .
-	docker rm -f octoman-build || true
-	docker run --name octoman-build octoman ls /go/bin
-	docker cp octoman-build:/go/bin/octoman .
-	docker rm octoman-build
-
-check: test-race test386 fmt vet ## Run tests and linters
+check: test-race fmt vet ## Run tests and linters
 
 test386: ## Run tests in 32-bit mode
 	GOARCH=386 govendor test +local
 
 test: ## Run tests
-	govendor test +local
+	go test -race `go list -tags=unit ./... | grep -v examples`
+
+test-all: test-unit test-integration test-performance ## Run all tests
+
+test-unit: ## Run unit tests
+	go test -tags=unit `go list -tags=unit ./... | grep -v examples`
+
+test-integration: ## Run integration tests
+	# start docker before
+	go test -tags=integration `go list -tags=integration ./... | grep -v examples`
+	# end docker
+
+test-performance: ## Run performance tests
+	go test -tags=performance `go list -tags=performance ./... | grep -v examples`
 
 test-race: ## Run tests with race detector
-	govendor test -race +local
+	go test -race +local
 
 fmt: ## Run gofmt linter
 	@for d in `govendor list -no-status +local | sed 's/github.com.hawky-4s-.octoman/./'` ; do \
@@ -54,17 +44,11 @@ fmt: ## Run gofmt linter
 		fi \
 	done
 
-lint: ## Run golint linter
-	@for d in `govendor list -no-status +local | sed 's/github.com.hawky-4s-.octoman/./'` ; do \
-		if [ "`golint $$d | tee /dev/stderr`" ]; then \
-			echo "^ golint errors!" && echo && exit 1; \
-		fi \
-	done
+lint: ## Run gometalinter
+	curl -Lo https://github.com/alecthomas/gometalinter/releases/download/v$(VERSION_GOMETALINTER)/gometalinter-$(VERSION_GOMETALINTER)-$(shell sed -e 's/\(.*\)/\L\1/')-amd64.tar.gz
 
 vet: ## Run go vet linter
-	@if [ "`govendor vet +local | tee /dev/stderr`" ]; then \
-		echo "^ go vet errors!" && echo && exit 1; \
-	fi
+	go vet ./...
 
 test-cover-html: PACKAGES = $(shell govendor list -no-status +local | sed 's/github.com.hawky-4s-.octoman/./')
 test-cover-html: ## Generate test coverage report

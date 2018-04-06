@@ -1,0 +1,32 @@
+[
+    {
+        "links": [],
+        "id": "707c1cde-32c8-11e8-b6fc-0242ac110002",
+        "definitionId": "invoice:2:6fb30070-32c8-11e8-b6fc-0242ac110002",
+        "businessKey": null,
+        "caseInstanceId": null,
+        "ended": false,
+        "suspended": false,
+        "tenantId": null
+    },
+    {
+        "links": [],
+        "id": "7084f6ae-32c8-11e8-b6fc-0242ac110002",
+        "definitionId": "invoice:2:6fb30070-32c8-11e8-b6fc-0242ac110002",
+        "businessKey": null,
+        "caseInstanceId": null,
+        "ended": false,
+        "suspended": false,
+        "tenantId": null
+    },
+    {
+        "links": [],
+        "id": "70a3efa4-32c8-11e8-b6fc-0242ac110002",
+        "definitionId": "invoice:2:6fb30070-32c8-11e8-b6fc-0242ac110002",
+        "businessKey": null,
+        "caseInstanceId": null,
+        "ended": false,
+        "suspended": false,
+        "tenantId": null
+    }
+]

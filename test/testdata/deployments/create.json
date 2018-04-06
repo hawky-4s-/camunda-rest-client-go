@@ -1,0 +1,34 @@
+{
+    "links": [
+        {
+            "method": "GET",
+            "href": "http://localhost:8080/engine-rest/deployment/8ddebc16-3786-11e8-b6fc-0242ac110002",
+            "rel": "self"
+        }
+    ],
+    "id": "8ddebc16-3786-11e8-b6fc-0242ac110002",
+    "name": "test",
+    "source": "process application",
+    "deploymentTime": "2018-04-03T21:32:48.012+0000",
+    "tenantId": "aTenantId",
+    "deployedProcessDefinitions": {
+        "invoice:1:8de10608-3786-11e8-b6fc-0242ac110002": {
+            "id": "invoice:1:8de10608-3786-11e8-b6fc-0242ac110002",
+            "key": "invoice",
+            "category": "http://www.omg.org/spec/BPMN/20100524/MODEL",
+            "description": null,
+            "name": "Invoice Receipt",
+            "version": 1,
+            "resource": "invoice.bpmn",
+            "deploymentId": "8ddebc16-3786-11e8-b6fc-0242ac110002",
+            "diagram": null,
+            "suspended": false,
+            "tenantId": "aTenantId",
+            "versionTag": "V1.0",
+            "historyTimeToLive": 30
+        }
+    },
+    "deployedCaseDefinitions": null,
+    "deployedDecisionDefinitions": null,
+    "deployedDecisionRequirementsDefinitions": null
+}

@@ -1,17 +1,53 @@
-# Camunda External Task Client (Java)
+# Camunda Rest Client Go
 
-The **Camunda External Task Client (Java)** allows to set up remote Service Tasks for your workflow.
+[![GitHub release](https://img.shields.io/github/release/hawky-4s-/camunda-rest-client-go.svg)](https://github.com/hawky-4s-/camunda-rest-client-go/releases/latest)
+[![Go Report Card](https://goreportcard.com/badge/github.com/hawky-4s-/camunda-rest-client-go)](https://goreportcard.com/report/github.com/hawky-4s-/camunda-rest-client-go)
+[![codecov](https://codecov.io/gh/hawky-4s-/camunda-rest-client-go/branch/master/graph/badge.svg)](https://codecov.io/gh/hawky-4s-/camunda-rest-client-go)
+[![Build Status](https://travis-ci.org/hawky-4s-/camunda-rest-client-go.svg?branch=master)](https://travis-ci.org/hawky-4s-/camunda-rest-client-go)
+[![GoDoc - Client](http://godoc.org/github.com/hawky-4s-/camunda-rest-client-go?status.svg)](https://godoc.org/github.com/hawky-4s-/camunda-rest-client-go)
+
+The **Camunda Rest Client Go** is written in Golang and allows the user to communicate with the [Camunda BPM Platform REST API](https://docs.camunda.org/manual/7.8/reference/rest/overview/).
+
+## Disclaimer
+This is a work in progress and **NOT** meant for any production use!
+It follows [semantic versioning 2.0.0](https://semver.org/spec/v2.0.0.html).
+
+## Installation
+
+```
+$ go get github.com/hawky-4s-/camunda-rest-client-go
+```
+
+
+## Development
+```
+$ go get github.com/hawky-4s-/camunda-rest-client-go
+$ cd $GOPATH/src/github.com/hawky-4s-/camunda-rest-client-go
+$ make
+```
+
+## Contributing
+
+  * Get started by checking our [contribution guidelines](https://github.com/zeebe-io/zbc-go/blob/master/CONTRIBUTING.md).
+  * Make sure you follow our [code of conduct](https://github.com/zeebe-io/zbc-go/blob/master/CODE_OF_CONDUCT.md).
+  * Checkout client documentation for [developers](http://godoc.org/github.com/hawky-4s-/camunda-rest-client-go)
 
 > **Heads Up!**
 >
 > This project is under heavy development and is not meant to be used as part of production environments.
 
 ## Features
-* Complete External Tasks
-* Extend the lock duration of External Tasks
-* Unlock External Tasks
-* Report BPMN errors as well as failures
-* Share primitive and object typed process variables with the Workflow Engine
+- Create, list and delete deployments
+- Create, list and delete process definitions
+- Create, list and delete process instances
+- List and resolve incidents
+- Work with External Tasks
+  - Fetch and lock
+  - Complete
+  - Unlock
+  - You get it, the whole thing ...
+  - Share primitive and object typed process variables with the Workflow Engine
+- Get metrics
 
 ## Documentation
 ### Table of Contents
@@ -38,17 +74,8 @@ The **Camunda External Task Client (Java)** allows to set up remote Service Task
 14. [License](#license)
 
 ### Prerequisites
-* Oracle Hotspot v1.8+ (JDK 8)
-
-### Maven coordinates
-The following Maven coordinates need to be added to the projects `pom.xml`:
-```xml
-<dependency>
-  <groupId>org.camunda.bpm</groupId>
-  <artifactId>camunda-external-task-client</artifactId>
-  <version>${version}</version>
-</dependency>
-```
+* Golang v1.8+
+* Go dep to get dependencies
 
 ### Bootstrapping the Client
 To configure and instantiate the client, a convenient fluent builder can be used. Calling `ExternalTaskClient#create`

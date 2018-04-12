@@ -111,7 +111,7 @@ func (pdc ProcessInstanceService) GetList() ([]*ProcessInstance, error) {
 }
 
 func (pdc ProcessInstanceService) GetListByQuery() *ProcessInstanceQueryBuilder {
-    return nil
+	return nil
 }
 
 func (pdc *ProcessInstanceService) Delete(id string) error {

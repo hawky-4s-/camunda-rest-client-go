@@ -34,12 +34,12 @@ func (p ProcessDefinition) String() string {
 }
 
 type StartProcessDefinitionBuilder struct {
-    processDefinitionService ProcessDefinitionService
-	id          *string
-	key         *string
-	messageName *string
-	businessKey *string
-	variables   *Variables
+	processDefinitionService ProcessDefinitionService
+	id                       *string
+	key                      *string
+	messageName              *string
+	businessKey              *string
+	variables                *Variables
 }
 
 func (pdb *StartProcessDefinitionBuilder) ById(id string) *StartProcessDefinitionBuilder {
@@ -63,14 +63,14 @@ func (pdb *StartProcessDefinitionBuilder) WithVariables(variables *Variables) *S
 }
 
 func (pdb *StartProcessDefinitionBuilder) Now() *ProcessInstance {
-    // TODO: call here
-    return nil
+	// TODO: call here
+	return nil
 }
 
 type ProcessDefinitionService service
 
 func (pdc ProcessDefinitionService) GetList() ([]*ProcessDefinition, error) {
-    return nil, nil
+	return nil, nil
 }
 
 func (pdc ProcessDefinitionService) Start() *StartProcessDefinitionBuilder {

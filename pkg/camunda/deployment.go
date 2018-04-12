@@ -3,13 +3,13 @@ package camunda
 import (
 	"bytes"
 	"fmt"
+	"github.com/hawky-4s-/camunda-rest-client-go/pkg/camunda/util"
 	"io"
 	"mime/multipart"
 	"net/http"
 	"os"
 	"strconv"
 	"time"
-    "github.com/hawky-4s-/camunda-rest-client-go/pkg/camunda/util"
 )
 
 const (
@@ -154,10 +154,10 @@ func (dc *DeploymentService) Delete(id string, optional map[string]interface{}) 
 		return err
 	}
 
-    _, err = doRequest(dc.client.ctx, dc.client.httpClient, dc.client.requestInterceptors, request, nil)
-    if err != nil {
-        return err
-    }
+	_, err = doRequest(dc.client.ctx, dc.client.httpClient, dc.client.requestInterceptors, request, nil)
+	if err != nil {
+		return err
+	}
 
-    return nil
+	return nil
 }

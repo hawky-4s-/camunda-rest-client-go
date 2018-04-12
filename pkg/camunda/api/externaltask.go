@@ -2,8 +2,8 @@ package api
 
 import (
 	"fmt"
+	"github.com/hawky-4s-/camunda-rest-client-go/pkg/camunda/util"
 	"time"
-    "github.com/hawky-4s-/camunda-rest-client-go/pkg/camunda/util"
 )
 
 const (
@@ -129,8 +129,8 @@ func (etc *ExternalTaskService) ErrorDetails(externalTask *ExternalTask) (string
 
 func (etc *ExternalTaskService) Get(taskId string) (*ExternalTask, error) {
 	var externalTask *ExternalTask
-    path := fmt.Sprintf(pathExternalTaskWithIdPattern, taskId)
-    _, err := etc.client.doGet(path, &externalTask, nil)
+	path := fmt.Sprintf(pathExternalTaskWithIdPattern, taskId)
+	_, err := etc.client.doGet(path, &externalTask, nil)
 	if err != nil {
 		return nil, err
 	}

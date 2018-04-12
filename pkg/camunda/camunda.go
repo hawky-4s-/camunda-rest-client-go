@@ -5,11 +5,11 @@ package camunda
 import (
 	"context"
 	"fmt"
+	"github.com/hawky-4s-/camunda-rest-client-go/pkg/camunda/api"
 	"net/http"
 	"net/url"
 	"strings"
 	"time"
-    "github.com/hawky-4s-/camunda-rest-client-go/pkg/camunda/api"
 )
 
 const (

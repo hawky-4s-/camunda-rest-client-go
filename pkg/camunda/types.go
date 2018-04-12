@@ -8,14 +8,15 @@ import (
 
 // SortOrder defines sorting order for queries which allow to sort by columns
 type SortOrder string
+
 const (
-    Asc  SortOrder = "asc"
-    Desc SortOrder = "desc"
+	Asc  SortOrder = "asc"
+	Desc SortOrder = "desc"
 )
 
 // used by count queries
 type CountResult struct {
-    Count int
+	Count int
 }
 
 type Link struct {

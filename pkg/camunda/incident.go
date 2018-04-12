@@ -1,9 +1,9 @@
 package camunda
 
 import (
+	"fmt"
+	"github.com/hawky-4s-/camunda-rest-client-go/pkg/camunda/util"
 	"time"
-    "fmt"
-    "github.com/hawky-4s-/camunda-rest-client-go/pkg/camunda/util"
 )
 
 const (
@@ -45,18 +45,18 @@ func (ic *IncidentService) GetList() ([]*Incident, error) {
 }
 
 func (ic *IncidentService) GetCount() (int, error) {
-    var result CountResult
-    _, err := ic.client.doGet(pathIncident, &result, nil)
-    if err != nil {
-        return 0, err
-    }
-    return result.Count, nil
+	var result CountResult
+	_, err := ic.client.doGet(pathIncident, &result, nil)
+	if err != nil {
+		return 0, err
+	}
+	return result.Count, nil
 }
 
 func (ic *IncidentService) Delete(id string) error {
-    _, err := ic.client.doDelete(fmt.Sprintf(pathIncidentWithIdPattern, id), nil)
-    if err != nil {
-        return err
-    }
-    return nil
+	_, err := ic.client.doDelete(fmt.Sprintf(pathIncidentWithIdPattern, id), nil)
+	if err != nil {
+		return err
+	}
+	return nil
 }

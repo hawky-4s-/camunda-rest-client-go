@@ -2,9 +2,9 @@ package camunda
 
 import (
 	"fmt"
+	"github.com/hawky-4s-/camunda-rest-client-go/pkg/camunda/util"
 	"net/http"
 	"time"
-    "github.com/hawky-4s-/camunda-rest-client-go/pkg/camunda/util"
 )
 
 const (
